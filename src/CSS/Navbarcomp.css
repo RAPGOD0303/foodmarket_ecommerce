@@ -1,0 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.nav-dropdown-hover:hover{
+    background-color: rgb(56, 56, 251);
+    color: white;
+    cursor: pointer;
+    border: none;
+}
