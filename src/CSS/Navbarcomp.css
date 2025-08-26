@@ -135,6 +135,65 @@
   text-align: center;
 }
 
+            /* Below Navbar CSS */
+.below-navbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;                  
+  padding: 10px 20px;
+  background-color: #fff;
+}
+
+.nav-below-dropdown {
+  flex-shrink: 0;
+  width: 300px;
+  /* border: 2px solid black;          */
+}
+
+.nav-below-dropdown .category-dropdown .dropdown-toggle {
+   min-width: 180px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #000;
+  background: none;
+  border: none;
+  text-align: auto;
+  padding: 20px;
+}
+
+.below-nav-items {
+  flex: 1;                    
+  justify-content: flex-start; 
+  margin-left: 50px;
+  width: 50%;
+  /* border: 2px solid red; */
+}
+
+.below-nav-items .nav {
+  display: flex;
+  flex-wrap: wrap;             
+  gap: 24px;                   
+}
+
+.below-nav-items .nav-link {
+  font-size:clamp(1rem, 15px, 5rem );
+  font-weight: 400;
+  color: #808080;
+  padding: 0;
+  white-space: nowrap;         
+}
+
+.below-nav-items .nav-link:hover {
+  color: #31322f;
+  text-decoration: none;
+}
+
+.nav-dropdown-hover {
+  cursor: pointer;
+}
+
+
+/* Media Query */
 @media (max-width: 992px) {
   .nav-multioption {
     margin-left: 0;

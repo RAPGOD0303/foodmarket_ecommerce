@@ -1,0 +1,52 @@
+.category{
+
+    .category-link{
+        text-decoration: none;
+        color: rgb(156, 155, 155);
+        font-size: 1rem;
+    }
+    .category-link:hover{
+        color: #252525;
+    }
+    .btn{
+        border: none;
+        background-color: rgba(231, 227, 227, 0.563);
+    }
+
+    .category-card{
+        /* border: 2px solid black; */
+        background: #fff;
+        border-radius: 15px;
+        padding: 25px 15px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        cursor: pointer;
+        transition: transform 0.2s;
+        height: 100%;
+        /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
+        transform: translateY(25px);
+
+        .icon img{
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 17px;
+        }
+        p{
+            font-size: 1.3em;
+        }
+    }
+    .category-card:hover {
+        transform: translateY(-1px);
+        /* box-shadow: 0 4px 10px rgba(0,0,0,0.5); */
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+
+}
+
+.swiper-wrapper{
+    height: 100% !important;
+}
+.swiper-slide{
+    height: auto !important; 
+}
+
