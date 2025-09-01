@@ -1,0 +1,122 @@
+[
+  {
+    "discount": "-30%",
+    "image": "../images/thumb-bananas",
+    "name": "Sunstar Fresh Melon Juice",
+    "unit": "1 UNIT",
+    "rating": 4.5,
+    "price": 18.00,
+    "favorite": false,
+    "quantity": 1,
+    "addToCart": true,
+    "Category": "Fruits and Veges"
+  },
+  {
+    "discount": "-30%",
+    "image": "../images/thumb-biscuits",
+    "name": "Sunstar Fresh Melon Juice",
+    "unit": "1 UNIT",
+    "rating": 4.5,
+    "price": 18.00,
+    "favorite": false,
+    "quantity": 1,
+    "addToCart": true,
+    "Category": "Fruits and Veges"
+  },
+  {
+    "discount": null,
+    "image": "../images/thumb-cucumber",
+    "name": "Sunstar Fresh Melon Juice",
+    "unit": "1 UNIT",
+    "rating": 4.5,
+    "price": 18.00,
+    "favorite": false,
+    "quantity": 1,
+    "addToCart": true,
+    "Category": "Fruits and Veges"
+  },
+  {
+    "discount": null,
+    "image": "../images/thumb-milk",
+    "name": "Sunstar Fresh Melon Juice",
+    "unit": "1 UNIT",
+    "rating": 4.5,
+    "price": 18.00,
+    "favorite": false,
+    "quantity": 1,
+    "addToCart": true,
+    "Category": "Fruits and Veges"
+  },
+  {
+    "discount": null,
+    "image": "../images/thumb-bananas",
+    "name": "Sunstar Fresh Melon Juice",
+    "unit": "1 UNIT",
+    "rating": 4.5,
+    "price": 18.00,
+    "favorite": false,
+    "quantity": 1,
+    "addToCart": true,
+    "Category": "Fruits and Veges"
+  },
+  {
+    "discount": null,
+    "image": "../images/thumb-biscuits",
+    "name": "Sunstar Fresh Melon Juice",
+    "unit": "1 UNIT",
+    "rating": 4.5,
+    "price": 18.00,
+    "favorite": false,
+    "quantity": 1,
+    "addToCart": true,
+    "Category": "Juices"
+  },
+  {
+    "discount": null,
+    "image": "../images/thumb-cucumber",
+    "name": "Sunstar Fresh Melon Juice",
+    "unit": "1 UNIT",
+    "rating": 4.5,
+    "price": 18.00,
+    "favorite": false,
+    "quantity": 1,
+    "addToCart": true,
+    "Category": "Juices"
+  },
+  {
+    "discount": null,
+    "image": "../images/thumb-milk",
+    "name": "Sunstar Fresh Melon Juice",
+    "unit": "1 UNIT",
+    "rating": 4.5,
+    "price": 18.00,
+    "favorite": false,
+    "quantity": 1,
+    "addToCart": true,
+    "Category": "Juices"
+  },
+  {
+    "discount": null,
+    "image": "../images/thumb-bananas",
+    "name": "Sunstar Fresh Melon Juice",
+    "unit": "1 UNIT",
+    "rating": 4.5,
+    "price": 18.00,
+    "favorite": false,
+    "quantity": 1,
+    "addToCart": true,
+    "Category": "Juices"
+  },
+  {
+    "discount": null,
+    "image": "../images/thumb-biscuits",
+    "name": "Sunstar Fresh Melon Juice",
+    "unit": "1 UNIT",
+    "rating": 4.5,
+    "price": 18.00,
+    "favorite": false,
+    "quantity": 1,
+    "addToCart": true,
+    "Category": "Juices"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  { "category": "oil", "title": "Gemini" },
+  { "category": "oil", "title": "Sundrop" },
+  { "category": "oil", "title": "Fortune" },
+  { "category": "oil", "title": "Dhara" },
+  { "category": "oil", "title": "Saffola" },
+ 
+  { "category": "soap", "title": "Lux" },
+  { "category": "soap", "title": "Dove" },
+  { "category": "soap", "title": "Lifebuoy" },
+  { "category": "soap", "title": "Pears" },
+  { "category": "soap", "title": "Cinthol" },
+ 
+  { "category": "shampoo", "title": "Clinic Plus" },
+  { "category": "shampoo", "title": "Pantene" },
+  { "category": "shampoo", "title": "Sunsilk" },
+  { "category": "shampoo", "title": "Head & Shoulders" },
+  { "category": "shampoo", "title": "Tresemme" },
+ 
+  { "category": "rice", "title": "India Gate" },
+  { "category": "rice", "title": "Daawat" },
+  { "category": "rice", "title": "Lal Qilla" },
+  { "category": "rice", "title": "Kohinoor" },
+  { "category": "rice", "title": "Fortune Basmati" },
+ 
+  { "category": "snacks", "title": "Kurkure" },
+  { "category": "snacks", "title": "Lays" },
+  { "category": "snacks", "title": "Bingo" },
+  { "category": "snacks", "title": "Haldiram Bhujia" },
+  { "category": "snacks", "title": "Pringles" },
+ 
+  { "category": "toothpaste", "title": "Colgate" },
+  { "category": "toothpaste", "title": "Pepsodent" },
+  { "category": "toothpaste", "title": "Closeup" },
+  { "category": "toothpaste", "title": "Sensodyne" },
+  { "category": "toothpaste", "title": "Dabur Red" },
+   { "category": "eeeeeeeeeeee", "title": "Colgate" },
+  { "category": "eeeeeeeeeeee", "title": "Pepsodent" },
+  { "category": "eeeeeeeeeeee", "title": "Closeup" },
+  { "category": "eeeeeeeeeeee", "title": "Sensodyne" },
+  { "category": "eeeeeeeeeeee", "title": "Dabur Red" }
+]
