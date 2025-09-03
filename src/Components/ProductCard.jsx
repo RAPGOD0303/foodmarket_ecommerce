@@ -2,9 +2,13 @@
 import { FaRegHeart, FaStar } from "react-icons/fa";
 import '../CSS/Product.css'
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addtoCart } from "../redux/cartSlice";
+
 
 function ProductCard({ product }) {
   const [itemCount, setItemCount]= useState(1);
+  const dispatch = useDispatch();
   return (
     <div className="card card-main">
        <div className="card-img-container">
@@ -32,7 +36,8 @@ function ProductCard({ product }) {
         <span className="item-quantity">{itemCount}</span>
         <button className="inc-button" onClick={()=>setItemCount(itemCount + 1)}>+</button>
       </div>
-      <button className="add-to-cart">Add to Cart</button>
+      <button className="add-to-cart"
+       onClick={()=>dispatch(addtoCart(product.name, product.unit))}>Add to Cart</button>
     </div>
   </div>
 </div>

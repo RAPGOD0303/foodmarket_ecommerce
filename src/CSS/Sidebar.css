@@ -1,0 +1,34 @@
+.overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar {
+  height: 100%;
+  width: 30%;
+  position: fixed;
+  background: #fff;
+  top: 0;
+  right: 0;
+  z-index: 10001;
+  overflow-y: auto;
+  transform: translateX(100%); /* hidden off screen */
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.show {
+  transform: translateX(0); /* slide in */
+}

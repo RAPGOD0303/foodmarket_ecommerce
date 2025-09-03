@@ -12,6 +12,12 @@ import { FiSearch } from "react-icons/fi";
 // import ListGroupItem from 'react-bootstrap/esm/ListGroupItem';
 import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
 import Bannercomp from "./Bannercomp";
+import { useSelector } from "react-redux";
+// import CartDropdown from "./CartDropdown";
+import SidebarOverlay from "./SideBarOverlay";
+import { IoMdArrowDropdown } from "react-icons/io";
+
+
 
 const navDropdownList = [
   { category: "All Categories" },
@@ -37,6 +43,9 @@ const pages = [
 export default function Navbarcomp() {
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [belowSelected, setBelowSelected] = useState("Shop by Department");
+  const [showSidebar, setShowSidebar] = useState(false);
+
+  const cartItems = useSelector(state=>state.cart.cart)
 
   return (
     <>
@@ -97,14 +106,27 @@ export default function Navbarcomp() {
             </div>
             <div className="nav-cart">
               <div className="cart-container">
-                <NavDropdown title="Your Cart" id="cart-dropdown"></NavDropdown>
-                <div className="cart-price">$1290.00</div>
+                {/* Instead of NavDropdown, trigger Sidebar */}
+                <div
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setShowSidebar(true)}
+                >
+                  Your Cart <IoMdArrowDropdown />
+                </div>
+
+                <div className="cart-price">Count {cartItems.length}</div>
+
+                {/* Sidebar Overlay */}
+                <SidebarOverlay
+                  show={showSidebar}
+                  onClose={() => setShowSidebar(false)}
+                />
               </div>
             </div>
           </div>
         </Container>
       </Navbar>
-
+      {/* below navbar code */}
       <div className="below-navbar">
         <div className="nav-below-dropdown">
           <NavDropdown title={belowSelected} className="category-dropdown">
@@ -181,7 +203,7 @@ export default function Navbarcomp() {
           </Nav>
         </div>
       </div>
-      <Bannercomp/>
+      <Bannercomp />
     </>
   );
 }

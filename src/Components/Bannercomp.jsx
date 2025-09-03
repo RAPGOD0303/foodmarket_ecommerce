@@ -14,7 +14,6 @@ import I4 from '../images/ad-image-2.png'
 import Categorycomp from './Categorycomp';
 import Trendingcomp from './Trendingcomp';
 // import ContactUS from './ContactUS';
-
 function Bannercomp() {
   const bannerData = [
     {

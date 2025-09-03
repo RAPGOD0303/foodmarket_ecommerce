@@ -134,6 +134,10 @@
   margin-top: 1px;
   text-align: center;
 }
+.dropdown-menu {
+  right: 0 !important; 
+  left: auto !important; 
+}
 
             /* Below Navbar CSS */
 .below-navbar {
