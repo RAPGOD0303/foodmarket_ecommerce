@@ -9,10 +9,29 @@ import { addtoCart } from "../redux/cartSlice";
 function ProductCard({ product }) {
   const [itemCount, setItemCount]= useState(1);
   const dispatch = useDispatch();
+
+  const dec = ()=> setItemCount(prev => Math.max(1, prev - 1));
+  const inc = ()=> setItemCount(prev => prev + 1);
+
+  const handleAddToCart= ()=>{
+    const payload = {
+      id : product.id ?? product.name,
+      name : product.name,
+      price : Number(product.price) ?? 0,
+      image : product.image ?? "",
+      unit : product.unit ?? "",
+      qty: itemCount
+    };
+    dispatch(addtoCart(payload))
+  }
   return (
     <div className="card card-main">
        <div className="card-img-container">
-  <span className="card-discount">-30%</span>
+  {product.discount && (
+        <span className="card-discount">
+          {product.discount}
+        </span>
+      )}
   <div className="card-fav">
     <FaRegHeart />
   </div>
@@ -35,9 +54,9 @@ function ProductCard({ product }) {
         <button className="dec-button" onClick={()=>setItemCount(itemCount - 1)}>-</button>
         <span className="item-quantity">{itemCount}</span>
         <button className="inc-button" onClick={()=>setItemCount(itemCount + 1)}>+</button>
-      </div>
+      </div>  
       <button className="add-to-cart"
-       onClick={()=>dispatch(addtoCart(product.name, product.unit))}>Add to Cart</button>
+       onClick={handleAddToCart}>Add to Cart</button>
     </div>
   </div>
 </div>

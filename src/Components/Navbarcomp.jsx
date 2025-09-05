@@ -16,6 +16,7 @@ import { useSelector } from "react-redux";
 // import CartDropdown from "./CartDropdown";
 import SidebarOverlay from "./SideBarOverlay";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -44,8 +45,13 @@ export default function Navbarcomp() {
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [belowSelected, setBelowSelected] = useState("Shop by Department");
   const [showSidebar, setShowSidebar] = useState(false);
-
+  const navigate = useNavigate();
   const cartItems = useSelector(state=>state.cart.cart)
+
+  const handleLogOut = ()=>{
+    localStorage.removeItem('isLoggedIn');
+    navigate('/')
+  }
 
   return (
     <>
@@ -101,7 +107,8 @@ export default function Navbarcomp() {
               <h5>+980-34984089</h5>
             </div>
             <div className="nav-icons">
-              <AiOutlineUser />
+              <AiOutlineUser  onClick={handleLogOut}/>
+              
               <AiOutlineHeart />
             </div>
             <div className="nav-cart">
@@ -114,7 +121,7 @@ export default function Navbarcomp() {
                   Your Cart <IoMdArrowDropdown />
                 </div>
 
-                <div className="cart-price">Count {cartItems.length}</div>
+                <div className="navbar-cart-price">Count {cartItems.length}</div>
 
                 {/* Sidebar Overlay */}
                 <SidebarOverlay

@@ -33,11 +33,26 @@
     
         .card-fav {
             position: absolute;
-            top: 8px;
-            right: 12px;
-            font-size: 18px;
-            color: #444;
-            cursor: pointer;
+              top: 8px;
+              right: 12px;
+              font-size: 18px;
+              color: #444;
+              cursor: pointer;
+              border: 1px solid gray;
+              border-radius: 50%;
+              /* perfect circle */
+              padding: 0 12px;
+              /* min-width: 32px; */
+              width: 44px;
+              height: 38px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+        }
+        .card-fav:hover{
+          color: #fff;
+          background-color: red;
+          transition: all 0.3s ease-in;
         }
         .card-body{
             padding-bottom: 0 !important;

@@ -18,7 +18,7 @@
 
 .sidebar {
   height: 100%;
-  width: 30%;
+  width: 26%;
   position: fixed;
   background: #fff;
   top: 0;
@@ -31,4 +31,19 @@
 
 .sidebar.show {
   transform: translateX(0); /* slide in */
+}
+
+.cart-price{
+  background-color: rgb(237, 214, 40);
+  color: #fff;
+  border-radius: 50%;    /* perfect circle */
+  padding: 0 12px;
+  min-width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.05rem;
+  
 }
