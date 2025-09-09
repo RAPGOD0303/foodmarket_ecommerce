@@ -10,9 +10,6 @@ function ProductCard({ product }) {
   const [itemCount, setItemCount]= useState(1);
   const dispatch = useDispatch();
 
-  const dec = ()=> setItemCount(prev => Math.max(1, prev - 1));
-  const inc = ()=> setItemCount(prev => prev + 1);
-
   const handleAddToCart= ()=>{
     const payload = {
       id : product.id ?? product.name,

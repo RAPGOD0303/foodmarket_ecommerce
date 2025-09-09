@@ -71,9 +71,10 @@ form input:focus {
 
 .signup-btn a{
   color: #534f4f;
-  text-decoration: none;
+  /* text-decoration: none; */
   cursor: pointer;
 }
 .signup-btn a:hover{
   color: #000000;
 }
+

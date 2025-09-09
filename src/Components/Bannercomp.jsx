@@ -13,6 +13,7 @@ import I3 from '../images/ad-image-1.png'
 import I4 from '../images/ad-image-2.png'
 import Categorycomp from './Categorycomp';
 import Trendingcomp from './Trendingcomp';
+import ProductCard from './ProductCard';
 // import ContactUS from './ContactUS';
 function Bannercomp() {
   const bannerData = [
@@ -116,6 +117,7 @@ function Bannercomp() {
       <Categorycomp/>
       <Trendingcomp/>
       {/* <ContactUS/> */}
+      {/* <ProductCard/> */}
     </>
   );
 }
