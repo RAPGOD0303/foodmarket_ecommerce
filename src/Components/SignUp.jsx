@@ -10,6 +10,9 @@ function SignUp() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const Navigate = useNavigate();
+  const [formValidate, setFormValidate] = useState({
+    firstname : ""
+  })
 
   const [formData, setFormData] = useState({
     firstname: "",
@@ -19,6 +22,7 @@ function SignUp() {
     email: "",
     mobile: "",
     usernameOrEmail: "",
+
   });
 const handlePassword = () => {
   setShowPassword(prev => prev ? false : true);
@@ -83,6 +87,61 @@ const handlePassword = () => {
     }
   };
 
+  // Object mapping of field validators
+// Object mapping: fieldName → validation function
+const validators = {
+  firstname: (value) => {
+    if (!value.trim()) return "First name is required";
+    if (value.length < 3) return "First name must be at least 3 characters";
+    if (value.length > 15) return "First name cannot exceed 15 characters";
+    return "";
+  },
+  lastname: (value) => {
+    if (!value.trim()) return "Last name is required";
+    if (value.length < 3) return "Last name must be at least 3 characters";
+    if (value.length > 15) return "Last name cannot exceed 15 characters";
+    return "";
+  },
+  username: (value) => {
+    if (!value.trim()) return "Username is required";
+    if (!/^[a-zA-Z0-9_]+$/.test(value)) return "Username can only contain letters, numbers, and underscores";
+    if (value.length < 4) return "Username must be at least 4 characters";
+    return "";
+  },
+  password: (value) => {
+    if (!value.trim()) return "Password is required";
+    if (value.length < 6) return "Password must be at least 6 characters";
+    if (!/[A-Z]/.test(value)) return "Password must contain at least one uppercase letter";
+    if (!/[0-9]/.test(value)) return "Password must contain at least one number";
+    if (!/[!@#$%^&*]/.test(value)) return "Password must contain at least one special character (!@#$%^&*)";
+    return "";
+  },
+  email: (value) => {
+    if (!value.trim()) return "Email is required";
+    if (!/\S+@\S+\.\S+/.test(value)) return "Email is invalid";
+    return "";
+  },
+  mobile: (value) => {
+    if (!value.trim()) return "Mobile number is required";
+    if (!/^[0-9]{10}$/.test(value)) return "Mobile number must be 10 digits";
+    return "";
+  },
+};
+
+const [errors, setErrors] = useState({});
+
+// Validation function
+const validateField = (name, value) => {
+  const validator = validators[name];
+  return validator ? validator(value) : "";
+};
+
+function handleBlur(e) {
+  const { name, value } = e.target;
+  const error = validateField(name, value);
+  setErrors((prev) => ({ ...prev, [name]: error }));
+}
+
   return (
     <div className="Signup">
       <div className="signup-main">
@@ -110,91 +169,136 @@ const handlePassword = () => {
                 </span>
               </h4>
               <form className="d-flex flex-column" onSubmit={handleSubmit}>
-                <input
-                  name="firstname"
-                  value={formData.firstname}
-                  onChange={handleChange}
-                  placeholder="First Name"
-                />
-                <input
-                  name="lastname"
-                  value={formData.lastname}
-                  onChange={handleChange}
-                  placeholder="Last Name"
-                />
-                <input
-                  name="username"
-                  value={formData.username}
-                  onChange={handleChange}
-                  placeholder="Username"
-                />
-                <div style={{ position: "relative", width: "100%" }}>
-                  <input
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Password"
-                    style={{ paddingRight: "36px" }} // Add space for the icon
-                  />
-                  {showPassword ? (
-                    <AiOutlineEye
-                      size={22}
-                      color="gray"
-                      style={{
-                        position: "absolute",
-                        right: "50%",
-                        top: "45%",
-                        transform: "translateY(-50%)",
-                        cursor: "pointer",
-                      }}
-                      onClick={handlePassword}
-                    />
-                  ) : (
-                    <AiOutlineEyeInvisible
-                      size={22}
-                      color="gray"
-                      style={{
-                        position: "absolute",
-                        right: "50%",
-                        top: "45%",
-                        transform: "translateY(-50%)",
-                        cursor: "pointer",
-                      }}
-                      onClick={handlePassword}
-                    />
-                  )}
-                </div>
-                <input
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  type="email"
-                  placeholder="Email"
-                />
-                <input
-                  name="mobile"
-                  value={formData.mobile}
-                  onChange={handleChange}
-                  type="tel"
-                  placeholder="Mobile Number"
-                />
+  {/* First Name */}
+  <div className="d-flex flex-column">
+    <input
+      name="firstname"
+      value={formData.firstname}
+      onChange={handleChange}
+      placeholder="First Name"
+      onBlur={handleBlur}
+      maxLength={15}
+      minLength={3}
+      required
+      id="firstname"
+      className={errors.firstname ? "error-border" : ""}
+    />
+    {errors.firstname && <span className="error-text">{errors.firstname}</span>}
+  </div>
 
-                <div className="signup-btn mt-4 d-flex flex-column">
-                  <button type="submit" className="submit-btn mb-2">
-                    Sign Up
-                  </button>
-                  <p>
-                    Already have an account?{" "}
-                    <a
-                      className="toggle-link"
-                      onClick={() => setIsSignUp(false)}
-                    >
-                      Sign In
-                    </a>
-                  </p>
-                </div>
-              </form>
+  {/* Last Name */}
+  <div className="d-flex flex-column">
+    <input
+      name="lastname"
+      value={formData.lastname}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      placeholder="Last Name"
+      className={errors.lastname ? "error-border" : ""}
+    />
+    {errors.lastname && <span className="error-text">{errors.lastname}</span>}
+  </div>
+
+  {/* Username */}
+  <div className="d-flex flex-column">
+    <input
+      name="username"
+      value={formData.username}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      placeholder="Username"
+      className={errors.username ? "error-border" : ""}
+    />
+    {errors.username && <span className="error-text">{errors.username}</span>}
+  </div>
+
+  {/* Password */}
+  <div className="d-flex flex-column" style={{ position: "relative", width: "100%" }}>
+    <input
+      name="password"
+      value={formData.password}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      type={showPassword ? "text" : "password"}
+      placeholder="Password"
+      className={errors.password ? "error-border" : ""}
+      style={{ paddingRight: "36px" }} // Add space for the icon
+    />
+    {showPassword ? (
+      <AiOutlineEye
+        size={22}
+        color="gray"
+        style={{
+          position: "absolute",
+          right: "50%",
+          top: "45%",
+          transform: "translateY(-50%)",
+          cursor: "pointer",
+        }}
+        onClick={handlePassword}
+      />
+    ) : (
+      <AiOutlineEyeInvisible
+        size={22}
+        color="gray"
+        style={{
+          position: "absolute",
+          right: "50%",
+          top: "45%",
+          transform: "translateY(-50%)",
+          cursor: "pointer",
+        }}
+        onClick={handlePassword}
+      />
+    )}
+    {errors.password && <span className="error-text">{errors.password}</span>}
+  </div>
+
+  {/* Email */}
+  <div className="d-flex flex-column">
+    <input
+      name="email"
+      value={formData.email}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      type="email"
+      placeholder="Email"
+      className={errors.email ? "error-border" : ""}
+    />
+    {errors.email && <span className="error-text">{errors.email}</span>}
+  </div>
+
+  {/* Mobile */}
+  <div className="d-flex flex-column">
+    <input
+      name="mobile"
+      value={formData.mobile}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      type="tel"
+      placeholder="Mobile Number"
+      className={errors.mobile ? "error-border" : ""}
+    />
+    {errors.mobile && <span className="error-text">{errors.mobile}</span>}
+  </div>
+
+  {/* Submit + Toggle */}
+  <div className="signup-btn mt-4 d-flex flex-column">
+    <button type="submit" className="submit-btn mb-2">
+      Sign Up
+    </button>
+    <p>
+      Already have an account?{" "}
+      <a
+        className="toggle-link"
+        onClick={() => setIsSignUp(false)}
+      >
+        Sign In
+      </a>
+    </p>
+  </div>
+</form>
+
             </>
           ) : (
             <>
