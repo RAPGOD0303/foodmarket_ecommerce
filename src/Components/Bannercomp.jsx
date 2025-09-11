@@ -14,6 +14,9 @@ import I4 from '../images/ad-image-2.png'
 import Categorycomp from './Categorycomp';
 import Trendingcomp from './Trendingcomp';
 import ProductCard from './ProductCard';
+import Bestsellingcomp from './Bestsellingcomp';
+import JsonData from './treanding.json';
+import { useState,useEffect } from "react";
 // import ContactUS from './ContactUS';
 function Bannercomp() {
   const bannerData = [
@@ -39,7 +42,15 @@ function Bannercomp() {
       image: { src: I2, alt: "Smooth Fruit Juice" }
     }
   ];
+useEffect(() => {
+  // 👇 Code here runs after the component renders
+  console.log("Component mounted or updated",JsonData);
 
+  // Optional cleanup function
+  return () => {
+    console.log("Component unmounted or before next run");
+  };
+}, []);
   return (
     <>
       <div className="banner-main">
@@ -115,9 +126,13 @@ function Bannercomp() {
         </div>
       </div>
       <Categorycomp/>
-      <Trendingcomp/>
+      <Trendingcomp />
       {/* <ContactUS/> */}
       {/* <ProductCard/> */}
+      <Bestsellingcomp data={JsonData[0]} right="swiper-btn-next0" left="swiper-btn-prev0"/>
+      <Bestsellingcomp data={JsonData[1]} right="swiper-btn-next1" left="swiper-btn-prev1"/>
+      <Bestsellingcomp data={JsonData[2]} right="swiper-btn-next2" left="swiper-btn-prev2"/>
+     
     </>
   );
 }

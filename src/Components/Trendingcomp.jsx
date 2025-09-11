@@ -18,31 +18,29 @@
         <div className="d-flex justify-content-between mb-5">
           <h2 className="fw-bold trending-header">Trending Products</h2>
           <div className="d-flex align-items-center gap-3">
-            <Nav 
-            variant="tabs" 
-            activeKey={activeTab}
-            onSelect={(selectedKey)=>setActiveTab(selectedKey)}>
+            <Nav
+              variant="tabs"
+              activeKey={activeTab}
+              onSelect={(selectedKey) => setActiveTab(selectedKey)}
+            >
               <Nav.Item>
                 <Nav.Link eventKey="ALL">ALL</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link  eventKey="Fruits and Veges">FRUITS & VEGES</Nav.Link>
+                <Nav.Link eventKey="Fruits and Veges">FRUITS & VEGES</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link  eventKey="Juices" >
-                  JUICES
-                </Nav.Link>
+                <Nav.Link eventKey="Juices">JUICES</Nav.Link>
               </Nav.Item>
             </Nav>
           </div>
         </div>
-          
       </div>
-      <div className=" card-list h-100vh">
-          {filteredProducts.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
-        </div>
+      <div className="card-list h-100vh">
+        {filteredProducts.map((p) => (
+          <ProductCard key={p.id} product={p}  />
+        ))}
+      </div>
     </>
   );
   }

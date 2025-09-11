@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import loadingAnimation from '../animation/Loading-3dots.lottie';
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux/authSlice";
 
 function SignUp() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const Navigate = useNavigate();
-  const [formValidate, setFormValidate] = useState({
-    firstname : ""
-  })
+  const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
     firstname: "",
@@ -52,7 +52,15 @@ const handlePassword = () => {
           mobile: formData.mobile,
         });
         setMessage(res.data.message);
+        // if (res.data.user) {
+        //   dispatch(setUser(res.data.user));
+        //   localStorage.setItem("user", JSON.stringify(res.data.user));
+        // }
+        dispatch(setUser(res.data.user)); // ✅ update Redux
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        localStorage.setItem("isLoggedIn", "true");
         setIsSignUp(false);
+        
       } else {
         const res = await api.post("/signin", {
           usernameOrEmail: formData.usernameOrEmail,
@@ -60,6 +68,9 @@ const handlePassword = () => {
         });
         setMessage(res.data.message);
         console.log("Logged in user:", res.data.user);
+        // save user both in redux and localStorage
+        dispatch(setUser(res.data.user));
+        localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("isLoggedIn", "true");
         setTimeout(() => {
           setLoading(false);
@@ -347,7 +358,7 @@ function handleBlur(e) {
                     />
                   )}
                 </div>
-
+                    {message && <p className="mt-3">{message}</p>}
                 <div className="signup-btn mt-4 d-flex flex-column">
                   <button type="submit" className="submit-btn mb-2">
                     Sign In
@@ -366,7 +377,7 @@ function handleBlur(e) {
             </>
           )}
 
-          {message && <p className="mt-3">{message}</p>}
+          
         </div>
       </div>
     </div>

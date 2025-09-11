@@ -83,5 +83,6 @@ form input:focus {
 
 .error-text {
   color: red;
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 700;
 }

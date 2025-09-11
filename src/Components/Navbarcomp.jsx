@@ -6,17 +6,18 @@ import logo from "../images/logo.png";
 import Form from "react-bootstrap/Form";
 import ListGroup from "react-bootstrap/Listgroup";
 import "../CSS/Navbarcomp.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
 // import { GoTriangleDown } from "react-icons/go";
 // import ListGroupItem from 'react-bootstrap/esm/ListGroupItem';
 import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
 import Bannercomp from "./Bannercomp";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import CartDropdown from "./CartDropdown";
 import SidebarOverlay from "./SideBarOverlay";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import {logout, setUser} from "../redux/authSlice";
 
 
 
@@ -45,13 +46,23 @@ export default function Navbarcomp() {
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [belowSelected, setBelowSelected] = useState("Shop by Department");
   const [showSidebar, setShowSidebar] = useState(false);
-  const navigate = useNavigate();
-  const cartItems = useSelector(state=>state.cart.cart)
 
+  //redux related code
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const cartItems = useSelector(state=>state.cart.cart)
+  const user = useSelector(state=>state.auth.user)
   const handleLogOut = ()=>{
-    localStorage.removeItem('isLoggedIn');
-    navigate('/')
+    dispatch(logout());
+    navigate("/");
   }
+
+  useEffect(() => {
+    const savedUser = localStorage.getItem("user");
+    if (savedUser && !user) {
+      dispatch(setUser(JSON.parse(savedUser)));
+    }
+  }, [dispatch, user]);
 
   return (
     <>
@@ -106,11 +117,36 @@ export default function Navbarcomp() {
               <p>For Support?</p>
               <h5>+980-34984089</h5>
             </div>
-            <div className="nav-icons">
-              <AiOutlineUser  onClick={handleLogOut}/>
-              
-              <AiOutlineHeart />
-            </div>
+            <div className="user-info-dropdown">
+      <AiOutlineUser
+        size={28}
+        className="user-icon"
+        style={{
+          border: "none",
+          backgroundColor: "rgb(250, 248, 248)",
+          borderRadius: "50%",
+          marginRight: "10px",
+        }}
+      />
+      <div className="dropdown-content">
+        {user ? (
+          <>
+            <p>
+              <strong>{user.firstname}</strong> 
+            </p>
+            <p>
+              <strong>{user.email}</strong> 
+            </p>
+            <button className="logout-btn" onClick={handleLogOut}>
+              Logout
+            </button>
+          </>
+        ) : (
+          <p>Not logged in</p>
+        )}
+      </div>
+      <AiOutlineHeart size={28} />
+    </div>
             <div className="nav-cart">
               <div className="cart-container">
                 {/* Instead of NavDropdown, trigger Sidebar */}
@@ -121,7 +157,9 @@ export default function Navbarcomp() {
                   Your Cart <IoMdArrowDropdown />
                 </div>
 
-                <div className="navbar-cart-price">Count {cartItems.length}</div>
+                <div className="navbar-cart-price">
+                  Count {cartItems.length}
+                </div>
 
                 {/* Sidebar Overlay */}
                 <SidebarOverlay
