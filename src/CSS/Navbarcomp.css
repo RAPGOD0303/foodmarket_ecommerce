@@ -98,7 +98,7 @@
   cursor: pointer;
 }
 
-.user-info-dropdown .dropdown-content {
+.dropdown-content {
   display: none;
   position: absolute;
   right: 0;
@@ -108,13 +108,11 @@
   padding: 12px 16px;
   border-radius: 6px;
   z-index: 1000;
-  white-space: normal;
 }
 
-.user-info-dropdown:hover .dropdown-content {
+.dropdown-content.show {
   display: block;
 }
-
 .logout-btn {
   margin-top: 10px;
   padding: 6px 12px;

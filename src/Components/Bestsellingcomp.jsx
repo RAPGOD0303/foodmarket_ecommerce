@@ -67,7 +67,7 @@ useEffect(() => {
       >
         {props.data.data.map((product,index) => (
           <SwiperSlide key={index}>
-            <ProductCard product={product} variant="compact" />
+            <ProductCard product={product} />
           </SwiperSlide>
         ))}
       </Swiper>

@@ -46,6 +46,7 @@ export default function Navbarcomp() {
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [belowSelected, setBelowSelected] = useState("Shop by Department");
   const [showSidebar, setShowSidebar] = useState(false);
+  const [logOutMenu, setLogoutMenu] = useState(false);
 
   //redux related code
   const navigate = useNavigate();
@@ -118,35 +119,37 @@ export default function Navbarcomp() {
               <h5>+980-34984089</h5>
             </div>
             <div className="user-info-dropdown">
-      <AiOutlineUser
-        size={28}
-        className="user-icon"
-        style={{
-          border: "none",
-          backgroundColor: "rgb(250, 248, 248)",
-          borderRadius: "50%",
-          marginRight: "10px",
-        }}
-      />
-      <div className="dropdown-content">
-        {user ? (
-          <>
-            <p>
-              <strong>{user.firstname}</strong> 
-            </p>
-            <p>
-              <strong>{user.email}</strong> 
-            </p>
-            <button className="logout-btn" onClick={handleLogOut}>
-              Logout
-            </button>
-          </>
-        ) : (
-          <p>Not logged in</p>
-        )}
-      </div>
-      <AiOutlineHeart size={28} />
-    </div>
+  <button 
+  onClick={() => setLogoutMenu(!logOutMenu)}
+  style={{border:"none", backgroundColor:"transparent"}}>
+    <AiOutlineUser
+      size={28}
+      className="user-icon"
+      style={{
+        border: "none",
+        backgroundColor: "rgb(250, 248, 248)",
+        borderRadius: "50%",
+        marginRight: "10px",
+      }}
+    />
+  </button>
+
+  <div className={`dropdown-content ${logOutMenu ? "show" : ""}`}>
+    {user ? (
+      <>
+        <p><strong>{user.firstname}</strong></p>
+        <p><strong>{user.email}</strong></p>
+        <button className="logout-btn" onClick={handleLogOut}>
+          Logout
+        </button>
+      </>
+    ) : (
+      <p>Not logged in</p>
+    )}
+  </div>
+
+  <AiOutlineHeart size={28} />
+</div>
             <div className="nav-cart">
               <div className="cart-container">
                 {/* Instead of NavDropdown, trigger Sidebar */}
