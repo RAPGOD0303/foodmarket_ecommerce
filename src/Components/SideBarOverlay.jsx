@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 function SidebarOverlay({ show, onClose }) {
 
   const itemInCart = useSelector((state) => state.cart.cart);
-  console.log("SideBar data = ", itemInCart);
+  // console.log("SideBar data = ", itemInCart);
 
   const totalPrice = itemInCart.reduce(
   (sum, item) => sum + item.price * item.qty,

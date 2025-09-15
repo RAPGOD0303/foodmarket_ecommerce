@@ -1,12 +1,26 @@
   import Nav from 'react-bootstrap/Nav';
   import '../CSS/Trendingcomp.css'
   import ProductCard from './ProductCard';
-  import { useState } from 'react';
-  import jsnofile from './Product.json';
+  import { useEffect, useState } from 'react';
+  // import jsnofile from './Product.json';
+  import axios from 'axios';
   function Trendingcomp() {
-      const [products, setProducts]  = useState(jsnofile);
+    
+      const [products, setProducts]  = useState([]);
       const [activeTab, setActiveTab] = useState("ALL");
 
+       useEffect(()=>{ 
+      axios.get("http://localhost:5000/api/fetch-data")
+     .then(res => {setProducts(res.data)
+      console.log("Data fetched throught backend = ", res.data)
+     })
+     .catch(error=>{console.error("Error fetching the data", error)})
+  }, [])
+
+  useEffect(()=>{
+    console.log("Products Updated state = ", products);
+    
+  })
 
       const filteredProducts = 
       activeTab === "ALL"

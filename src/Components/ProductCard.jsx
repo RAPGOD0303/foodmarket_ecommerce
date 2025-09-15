@@ -42,7 +42,7 @@ function ProductCard({ product }) {
   <div className="card-body">
     <h5 className="card-title">{product.name}</h5>
     <p className="card-text">
-      <span className="unit">{product.unit}</span>
+      <span className="unit">{product.quantity}</span>
       <span className="star"><FaStar color="#f3cd53ff" /> {product.rating}</span>
     </p>
     <h3 className="fw-bold">${Number(product.price).toFixed(2)}</h3>

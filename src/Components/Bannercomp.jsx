@@ -17,6 +17,7 @@ import ProductCard from './ProductCard';
 import Bestsellingcomp from './Bestsellingcomp';
 import JsonData from './treanding.json';
 import { useState,useEffect } from "react";
+// import ItemList from './ItemList';
 // import ContactUS from './ContactUS';
 function Bannercomp() {
   const bannerData = [
@@ -125,14 +126,14 @@ useEffect(() => {
 
         </div>
       </div>
-      <Categorycomp/>
+      {/* <Categorycomp/> */}
       <Trendingcomp />
       {/* <ContactUS/> */}
       {/* <ProductCard/> */}
-      <Bestsellingcomp data={JsonData[0]} right="swiper-btn-next0" left="swiper-btn-prev0"/>
+      {/* <Bestsellingcomp data={JsonData[0]} right="swiper-btn-next0" left="swiper-btn-prev0"/>
       <Bestsellingcomp data={JsonData[1]} right="swiper-btn-next1" left="swiper-btn-prev1"/>
-      <Bestsellingcomp data={JsonData[2]} right="swiper-btn-next2" left="swiper-btn-prev2"/>
-     
+      <Bestsellingcomp data={JsonData[2]} right="swiper-btn-next2" left="swiper-btn-prev2"/> */}
+     {/* <ItemList/> */}
     </>
   );
 }
