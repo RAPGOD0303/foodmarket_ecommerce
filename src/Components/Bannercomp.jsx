@@ -11,12 +11,12 @@ import I1 from '../images/product-thumb-1.png'
 import I2 from '../images/product-thumb-2.png'
 import I3 from '../images/ad-image-1.png'
 import I4 from '../images/ad-image-2.png'
-import Categorycomp from './Categorycomp';
+// import Categorycomp from './Categorycomp';
 import Trendingcomp from './Trendingcomp';
-import ProductCard from './ProductCard';
-import Bestsellingcomp from './Bestsellingcomp';
+// import ProductCard from './ProductCard';
+// import Bestsellingcomp from './Bestsellingcomp';
 import JsonData from './treanding.json';
-import { useState,useEffect } from "react";
+import {useEffect } from "react";
 // import ItemList from './ItemList';
 // import ContactUS from './ContactUS';
 function Bannercomp() {
@@ -103,7 +103,7 @@ useEffect(() => {
               </Link>
             </div>
             <div className="fadd-image d-flex align-items-end" >
-              <img src={I3} alt="grocery image" />
+              <img src={I3} alt="grocery" />
             </div>
           </div>
 
@@ -120,7 +120,7 @@ useEffect(() => {
               </Link>
             </div>
             <div className="fadd-image d-flex align-items-end" >
-              <img src={I4} alt="grocery image" />
+              <img src={I4} alt="grocery" />
             </div>
           </div>
 
